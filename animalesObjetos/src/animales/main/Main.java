@@ -79,7 +79,7 @@ public class Main {
     
   //[visibilidad] [modificadores] tipoDeRetorno nombreDelMetodo ([parametro1], [parametro2]... [parametroN])
     public static void insertarAnimal() {
-    	Animal animal = new Animal();
+    	/*Animal animal = new Animal();
     	
     	System.out.println("Nombre:");
     	animal.nombre = teclado.next();
@@ -92,9 +92,24 @@ public class Main {
     	System.out.println("Nombre del dueño");
     	animal.nomDueno = teclado.next();
     	System.out.println("Fecha nacimiento");
-    	animal.fechaNacimiento = teclado.next();
+    	animal.fechaNacimiento = teclado.next();*/
     	
-    	animales[Animal.numeroAnimalesCreados] = animal;
+    	System.out.println("Nombre:");
+    	String nombre = teclado.next();
+    	System.out.println("Tipo de animal");
+    	String tipo = teclado.next();
+    	System.out.println("Raza");
+    	String raza = teclado.next();
+    	System.out.println("Color");
+    	String color = teclado.next();
+    	System.out.println("Nombre del dueño");
+    	String dueno = teclado.next();
+    	System.out.println("Fecha nacimiento");
+    	String fecha = teclado.next();
+    	
+    	Animal a = new Animal(nombre, tipo, raza, color, dueno, fecha);
+    	
+    	animales[Animal.numeroAnimalesCreados] = a;
     	
     	Animal.numeroAnimalesCreados ++;
 
@@ -104,17 +119,17 @@ public class Main {
     	Animal animal = new Animal();
     	
     	System.out.println("Nombre:");
-    	animal.nombre = teclado.next();
+    	animal.setNombre(teclado.next());
     	System.out.println("Tipo de animal");
-    	animal.tipoAnimal = teclado.next();
+    	animal.setTipoAnimal(teclado.next());
     	System.out.println("Raza");
-    	animal.raza = teclado.next();
+    	animal.setRaza(teclado.next());
     	System.out.println("Color");
-    	animal.color = teclado.next();
+    	animal.setColor(teclado.next());
     	System.out.println("Nombre del dueño");
-    	animal.nomDueno = teclado.next();
+    	animal.setNomDueno(teclado.next());
     	System.out.println("Fecha nacimiento");
-    	animal.fechaNacimiento = teclado.next();
+    	animal.setFechaNacimiento(teclado.next());
     	
     	animales[fila] = animal;
     }
