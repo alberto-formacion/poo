@@ -17,7 +17,11 @@ public class Loro extends Ave{
 		this.color = color;
 	}
 
-
+	@Override
+	public void cantar() {
+		System.out.println("Canto como un Loro");
+		
+	}
 
 	public void deDondeEres() {
 		switch(region) {
@@ -39,7 +43,18 @@ public class Loro extends Ave{
 	}
 
 	public String getRegion() {
-		return region;
+		switch(region) {
+		case "N":
+			return "Norte";
+		case "S":
+			return "Sur";
+		case "E":
+			return "Este";
+		case "O":
+			return "Oeste";
+		default:
+			return "Región desconocida";
+		}
 	}
 
 	public void setRegion(String region) {

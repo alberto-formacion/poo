@@ -1,6 +1,6 @@
 package pajaritos;
 
-public class Ave {
+public abstract class Ave {
 	
 	private String sexo;
 	private int edad;
@@ -25,6 +25,8 @@ public class Ave {
 		
 		numAvesCreadas++;	
 	}
+	
+	public abstract void cantar();
 	
 	public static void numeroAvesCreadas() {
 		System.out.println("El numero de aves creadas es: " + numAvesCreadas);

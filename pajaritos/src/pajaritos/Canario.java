@@ -1,6 +1,6 @@
 package pajaritos;
 
-public class Canario extends Ave{
+public abstract class Canario extends Ave{
 	
 	private double tamano;
 

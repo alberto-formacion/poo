@@ -9,6 +9,12 @@ public class Piolin extends Canario{
 		this.numPeliculas = numPeliculas;
 	}
 
+	@Override
+	public void cantar() {
+		System.out.println("Canto como un piolin");
+		
+	}
+	
 	public int getNumPeliculas() {
 		return numPeliculas;
 	}
