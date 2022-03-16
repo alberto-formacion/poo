@@ -1,6 +1,6 @@
 package juego;
 
-public class Juego {
+public abstract class Juego {
 	
 	private int numVidasRestantes;
 	private int numVidasIniciales;
@@ -38,5 +38,7 @@ public class Juego {
 			System.out.println("Nuevo RECORD mundial " + record);
 		}
 	}
+	
+	public abstract void jugar();
 
 }
