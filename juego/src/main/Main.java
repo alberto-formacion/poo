@@ -1,6 +1,8 @@
 package main;
 
+import juego.JuegoAdivinaImpar;
 import juego.JuegoAdivinaNumero;
+import juego.JuegoAdivinaPar;
 
 public class Main {
 
@@ -15,12 +17,15 @@ public class Main {
 		j1.muestraVidasRestantes();
 		j2.muestraVidasRestantes();*/
 		
-		JuegoAdivinaNumero juegoAN = new JuegoAdivinaNumero(3, 5);
-		juegoAN.jugar();
-		
 		//crear una instancia de cada juego
+		JuegoAdivinaNumero juegoAN = new JuegoAdivinaNumero(3, 5);
+		JuegoAdivinaImpar juegoAI = new JuegoAdivinaImpar(3,7);
+		JuegoAdivinaPar juegoAP = new JuegoAdivinaPar(3, 2);
 		
 		//llamar al metodo jugar de cada una de ellas
+		juegoAN.jugar();
+		juegoAI.jugar();
+		juegoAP.jugar();
 
 	}
 

@@ -30,7 +30,7 @@ public class JuegoAdivinaNumero extends Juego{ //extiende de Juego
 			int numero = teclado.nextInt();
 			
 			//si validarNumero es igual a true
-			
+			if(validarNumero(numero)) {
 				//si el numero es igual a numeroAdivinar
 				if(numero == numeroAdivinar) {
 					//mostrar un mensaje de acertasre
@@ -57,17 +57,20 @@ public class JuegoAdivinaNumero extends Juego{ //extiende de Juego
 					}
 				}
 			//en caso contrario
+			}else {
 				//le ponemos a la variable seguirJugando el valor true
+				seguirJugando = true;
+			}
 
 		//} while(seguirJugando sea true);
-		//}while(seguirJugando);
-		}while(seguirJugando == true);
+		}while(seguirJugando);
+		//}while(seguirJugando == true);
 		
-		teclado.close();
 	}
 	
 	//crear un metodo que devuelve un boolean y recibe por parametro un numero entero
-	//public boolean validarNumero(int numero) {
+	public boolean validarNumero(int numero) {
 		//retornamos un true
-	//}
+		return true;
+	}
 }
