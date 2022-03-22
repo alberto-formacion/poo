@@ -22,4 +22,14 @@ public class JuegoAdivinaImpar extends JuegoAdivinaNumero{//extiende de JuegoAdi
 		}
 	
 	}
+	
+	@Override
+	public void muestraNombre() {
+		System.out.println("Juego Adivina Numero IMPAR");
+	}
+	
+	@Override
+	public void muestraInfo() {
+		System.out.println("Introduce numeros IMPARES hasta encontrar el numero secreto, tienes " + getNumVidasIniciales() + " intentos para conseguirlo");
+	}
 }

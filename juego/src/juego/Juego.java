@@ -38,7 +38,13 @@ public abstract class Juego {
 			System.out.println("Nuevo RECORD mundial " + record);
 		}
 	}
-	
-	public abstract void jugar();
+
+	public int getNumVidasIniciales() {
+		return numVidasIniciales;
+	}
+
+	public void setNumVidasIniciales(int numVidasIniciales) {
+		this.numVidasIniciales = numVidasIniciales;
+	}
 
 }

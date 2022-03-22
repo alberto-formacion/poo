@@ -22,6 +22,15 @@ public class JuegoAdivinaPar extends JuegoAdivinaNumero{//extiende de JuegoAdivi
 		}
 	
 	}
-
+	
+	@Override
+	public void muestraNombre() {
+		System.out.println("Juego Adivina Numero PAR");
+	}
+	
+	@Override
+	public void muestraInfo() {
+		System.out.println("Introduce numeros PARES hasta encontrar el numero secreto, tienes " + getNumVidasIniciales() + " intentos para conseguirlo");
+	}
 		
 }

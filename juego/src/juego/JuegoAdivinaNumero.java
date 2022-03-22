@@ -2,7 +2,9 @@ package juego;
 
 import java.util.Scanner;
 
-public class JuegoAdivinaNumero extends Juego{ //extiende de Juego
+import juego.interfaces.Jugable;
+
+public class JuegoAdivinaNumero extends Juego implements Jugable{ //extiende de Juego
 	
 	//crear un atributo numeroAdivinar de tipo entero
 	private int numeroAdivinar;
@@ -72,5 +74,15 @@ public class JuegoAdivinaNumero extends Juego{ //extiende de Juego
 	public boolean validarNumero(int numero) {
 		//retornamos un true
 		return true;
+	}
+
+	@Override
+	public void muestraNombre() {
+		System.out.println("Juego Adivina Numero");
+	}
+
+	@Override
+	public void muestraInfo() {
+		System.out.println("Introduce numeros hasta encontrar el numero secreto, tienes " + getNumVidasIniciales() + " intentos para conseguirlo");
 	}
 }
