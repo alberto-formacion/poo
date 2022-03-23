@@ -45,9 +45,9 @@ public class Main {
 		
 		int juegoSeleccionado = 0;
 		
-		JuegoAdivinaNumero juegoAN = new JuegoAdivinaNumero(3, 5);
-		JuegoAdivinaImpar juegoAI = new JuegoAdivinaImpar(3,7);
-		JuegoAdivinaPar juegoAP = new JuegoAdivinaPar(3, 2);
+		JuegoAdivinaNumero juegoAN = new JuegoAdivinaNumero(3);
+		JuegoAdivinaImpar juegoAI = new JuegoAdivinaImpar(3);
+		JuegoAdivinaPar juegoAP = new JuegoAdivinaPar(3);
 		
 		Jugable[] juegos = new Jugable[3];
 		juegos[0] = juegoAN;

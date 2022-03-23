@@ -8,15 +8,10 @@ import juego.interfaces.Jugable;
 
 public class JuegoAdivinaNumero extends Juego implements Jugable{ 
 	private int numeroAdivinar;
-	//crear un atributo de tipo random
 	private Random random;
 	
-	//Eliminar el parametro numeroAdivinar
-	public JuegoAdivinaNumero(int vidas, int numeroAdivinar) {
+	public JuegoAdivinaNumero(int vidas) {
 		super(vidas);
-		//eliminar esta linea porque ya no tiene sentido
-		this.numeroAdivinar = numeroAdivinar;
-		//inicializar el atributo random utilizando una semilla
 		random = new Random(Calendar.getInstance().getTimeInMillis());
 	}
 	
@@ -66,7 +61,26 @@ public class JuegoAdivinaNumero extends Juego implements Jugable{
 		System.out.println("Introduce numeros hasta encontrar el numero secreto, tienes " + getNumVidasIniciales() + " intentos para conseguirlo");
 	}
 	
-	//sobreescribir el metodo reiniciarPartida del padre (Juego)
-		//llamar al metodo padre utilizando super y el nombre del metodo (reiniciarPartida)
-		//guardar en numeroAdivinar un numero aleatorio entre 1 y 10 **random.nextInt(10 - 1 + 1) + 1**
+	@Override
+	public void reiniciarPartida() {
+		super.reiniciarPartida();
+		numeroAdivinar = random.nextInt(10) + 1;
+	}
+	
+	public Random getRandom() {
+		return random;
+	}
+
+	public void setRandom(Random random) {
+		this.random = random;
+	}
+
+	public int getNumeroAdivinar() {
+		return numeroAdivinar;
+	}
+
+	public void setNumeroAdivinar(int numeroAdivinar) {
+		this.numeroAdivinar = numeroAdivinar;
+	}
+	
 }

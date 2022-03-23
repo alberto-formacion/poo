@@ -2,8 +2,8 @@ package juego;
 
 public class JuegoAdivinaImpar extends JuegoAdivinaNumero{//extiende de JuegoAdivinaNumero
 	
-	public JuegoAdivinaImpar(int vidas, int numeroAdivinar) {
-		super(vidas, numeroAdivinar);
+	public JuegoAdivinaImpar(int vidas) {
+		super(vidas);
 	}
 	
 	@Override
@@ -27,7 +27,16 @@ public class JuegoAdivinaImpar extends JuegoAdivinaNumero{//extiende de JuegoAdi
 		System.out.println("Introduce numeros IMPARES hasta encontrar el numero secreto, tienes " + getNumVidasIniciales() + " intentos para conseguirlo");
 	}
 	
-	//sobreescribir el metodo reiniciarPartida del padre (JuegoAdivinaNumero)
-		//llamar al metodo reiniciarPartida del padre utilizando super
-		//crear numeros aleatorios y validaros con el metodo validarNumero hasta que el metodo devuelva un true utilizando un do..while
+	@Override
+	public void reiniciarPartida() {
+		boolean esNumPar= false;
+		do {
+			super.reiniciarPartida();
+			if(getNumeroAdivinar()%2==0) {
+				esNumPar = true; 
+			}else {
+				esNumPar = false;
+			}
+		}while(esNumPar);
+	}
 }
