@@ -5,6 +5,7 @@ import java.util.Scanner;
 import juego.JuegoAdivinaImpar;
 import juego.JuegoAdivinaNumero;
 import juego.JuegoAdivinaPar;
+import juego.JuegoAhorcado;
 import juego.interfaces.Jugable;
 
 public class Main {
@@ -48,11 +49,13 @@ public class Main {
 		JuegoAdivinaNumero juegoAN = new JuegoAdivinaNumero(3);
 		JuegoAdivinaImpar juegoAI = new JuegoAdivinaImpar(3);
 		JuegoAdivinaPar juegoAP = new JuegoAdivinaPar(3);
+		JuegoAhorcado juegoAH = new JuegoAhorcado(3, "aparcar");
 		
-		Jugable[] juegos = new Jugable[3];
+		Jugable[] juegos = new Jugable[4];
 		juegos[0] = juegoAN;
 		juegos[1] = juegoAI;
 		juegos[2] = juegoAP;
+		juegos[3] = juegoAH;
 		
 		do {
 			System.out.println("Bienvenido a mis juegos");
