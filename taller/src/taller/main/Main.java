@@ -8,9 +8,6 @@ public class Main {
 		
 		GestionPersona gestionPersona = new GestionPersona();
 
-			gestionPersona.crearCliente();
-			gestionPersona.mostrarClientes();
-
 	}
 
 }
