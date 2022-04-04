@@ -222,12 +222,4 @@ public class GestionPersona {
 		}
 	}
 	
-	/*private Mecanico obtenerMecanicoPorDNI(String dni) {
-		
-	}
-	
-	public Cliente obtenerClientePorDNI(String dni) {
-		
-	}*/
-
 }
