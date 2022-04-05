@@ -2,9 +2,12 @@ package taller.persona;
 
 import java.time.LocalDate;
 
+import taller.vehiculo.Vehiculo;
+
 public class Cliente extends Persona{
 	
 	private String numCliente;
+	private Vehiculo vehiculo;
 
 	public Cliente(String dni, String nombre, String apellidos, LocalDate fechaNacimiento, String numCliente) {
 		super(dni, nombre, apellidos, fechaNacimiento);
@@ -17,6 +20,14 @@ public class Cliente extends Persona{
 
 	public void setNumCliente(String numCliente) {
 		this.numCliente = numCliente;
+	}
+
+	public Vehiculo getVehiculo() {
+		return vehiculo;
+	}
+
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
 	}
 
 	@Override

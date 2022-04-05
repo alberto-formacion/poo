@@ -2,9 +2,12 @@ package taller.persona;
 
 import java.time.LocalDate;
 
+import taller.vehiculo.Vehiculo;
+
 public class Mecanico extends Persona{
 	
 	private String nss;
+	private Vehiculo reparandoVehiculo;
 	
 	private double sueldoAnualBruto;
 	public Mecanico(String dni, String nombre, String apellidos, LocalDate fechaNacimiento, String nss,
@@ -25,6 +28,14 @@ public class Mecanico extends Persona{
 	}
 	public void setSueldoAnualBruto(double sueldoAnualBruto) {
 		this.sueldoAnualBruto = sueldoAnualBruto;
+	}
+
+	public Vehiculo getReparandoVehiculo() {
+		return reparandoVehiculo;
+	}
+
+	public void setReparandoVehiculo(Vehiculo reparandoVehiculo) {
+		this.reparandoVehiculo = reparandoVehiculo;
 	}
 
 }

@@ -4,6 +4,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import taller.enums.TipoMotor;
+import taller.vehiculo.Coche;
+import taller.vehiculo.Moto;
+import taller.vehiculo.Vehiculo;
+
 public class GestionPersona {
 	
 	private Cliente[] clientes = new Cliente[10];
@@ -220,6 +225,123 @@ public class GestionPersona {
 				System.out.println("El sueldo del Mecanico " + mecanicos[i].getDni() + " es: " + sueldoMensual + "€");
 			}
 		}
+	}
+	
+	public void anadirVehiculoNuevoCliente() {
+		System.out.println("Introduce DNI cliente");
+		String dni = teclado.next();
+		
+		for(int i=0; i<clientes.length; i++) {
+			if(clientes[i]!=null && clientes[i].getDni().equals(dni)) {
+	
+				System.out.println("¿Que tipo de vehiculo quieres añadir?");
+				System.out.println("1.-Coche");
+				System.out.println("2.-Moto");
+				
+				int tipoVehiculo = teclado.nextInt();
+				
+				System.out.println("Introduce la matricula");
+				String matricula = teclado.next();
+				System.out.println("Introduce el color");
+				String color = teclado.next();
+				System.out.println("Introduce el numero de bastidor");
+				String numBastidor = teclado.next();
+				
+				System.out.println("Introduce el tipo de motor");
+				TipoMotor[] tiposMotor = TipoMotor.values();
+				for(int j=0; j<tiposMotor.length;j++) {
+					System.out.println((j+1)+".-"+tiposMotor[j].getNombre());
+				}
+				
+				int tipoMotor = teclado.nextInt();
+				
+				TipoMotor tm;
+				
+				if(tipoMotor == 1) {
+					tm = TipoMotor.DIESEL;
+				}else {
+					tm = TipoMotor.GASOLINA;
+				}
+				
+				System.out.println("Introduce los caballos");
+				int caballos = teclado.nextInt();
+				
+				Vehiculo nuevoVehiculo;
+				
+				if(tipoVehiculo == 1) {
+					System.out.println("Introduce la potencia");
+					int potencia = teclado.nextInt();
+					
+					nuevoVehiculo = new Coche(matricula, color, numBastidor, tm, caballos, potencia);
+				}else {
+					System.out.println("Introduce la cilindrada");
+					int cilindrada = teclado.nextInt();
+					
+					nuevoVehiculo = new Moto(matricula, color, numBastidor, tm, caballos, cilindrada);
+				}
+				
+				if(clientes[i].getVehiculo()!=null) {
+					System.out.println("¿Quieres cambiar el vehiculo existente por el nuevo vehiculo que acabas de crear?(S/N)");
+					String respuesta = teclado.next();
+					if("s".equalsIgnoreCase(respuesta)) {
+						clientes[i].setVehiculo(nuevoVehiculo);
+					}
+				}else {
+					clientes[i].setVehiculo(nuevoVehiculo);
+				}
+				
+				break;
+			}
+		}
+		
+	}
+	
+	public void anadirVehiculoRepararMecanico() {
+		System.out.println("Introduce DNI cliente");
+		String dni = teclado.next();
+		
+		boolean vehiculoAsignado = false;
+		
+		for(int i=0; i<clientes.length; i++) {
+			if(clientes[i]!=null && clientes[i].getDni().equals(dni)) {
+				for(int j=0;j<mecanicos.length;j++) {
+					if(mecanicos[j]!=null && mecanicos[j].getReparandoVehiculo()==null) {
+						mecanicos[j].setReparandoVehiculo(clientes[i].getVehiculo());
+						vehiculoAsignado = true;
+						break;
+					}
+				}
+				if(vehiculoAsignado) {
+					break;
+				}
+			}
+		}
+		
+		
+	}
+	
+	public void terminarReparacion() {
+		System.out.println("Introduce DNI cliente");
+		String dni = teclado.next();
+		
+		for(int i=0; i<mecanicos.length; i++) {
+			if(mecanicos[i]!=null && mecanicos[i].getDni().equals(dni)) {
+				mecanicos[i].setReparandoVehiculo(null);
+			}
+		}
+	}
+	
+	public Cliente obtenerClienteDNI() {
+		System.out.println("Introduce DNI cliente");
+		String dni = teclado.next();
+		
+		for(int i=0; i<clientes.length; i++) {
+			if(clientes[i]!=null && clientes[i].getDni().equals(dni)) {
+				return clientes[i];
+			}
+		}
+		
+		return null;
 	}
 	
 }

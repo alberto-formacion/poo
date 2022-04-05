@@ -3,6 +3,7 @@ package taller.vehiculo;
 import java.util.Scanner;
 
 import taller.enums.TipoMotor;
+import taller.persona.Cliente;
 
 public class GestionVehiculo {
 	
@@ -97,6 +98,15 @@ public class GestionVehiculo {
 			System.out.println("Vehiculo eliminado");
 		}else {
 			System.out.println("No existe el vehiculo con esa matricula");
+		}
+	}
+	
+	public void anadirVehiculoClienteVenta(Cliente cliente) {
+		for(int i=0;i<vehiculos.length;i++) {
+			if(vehiculos[i]==null) {
+				vehiculos[i] = cliente.getVehiculo();
+				cliente.setVehiculo(null);
+			}
 		}
 	}
 
