@@ -27,7 +27,7 @@ public class Main {
 		if(usuarioLogin!=null) {
 			String respuesta = "";
 			do {
-				System.out.println("Bienbenido " + usuarioLogin.getNombre() + " " + usuarioLogin.getApellidos());
+				System.out.println("Bienvenido " + usuarioLogin.getNombre() + " " + usuarioLogin.getApellidos());
 				int opcion;
 				if(usuarioLogin.getTipoUsuario() == TipoUsuario.ALUMNO) {
 					opcion = menuAlumno(teclado);
