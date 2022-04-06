@@ -6,6 +6,7 @@ public class UsuarioMateria {
 	
 	private Usuario alumno;
 	private Usuario profesor;
+	private Materia materia;
 	private LocalDateTime fechaHoraEvaluacion;
 	private double nota;
 	
