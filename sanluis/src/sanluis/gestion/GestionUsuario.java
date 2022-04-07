@@ -24,18 +24,35 @@ public class GestionUsuario {
 	//login
 	public Usuario login(String dni, String contrasena) {
 		//buscar en el array si hay algun usuario que su dni y contraseña coincidan
+		
+		for(int i=0;i<usuarios.size();i++) {
+			Usuario usuario = usuarios.get(i);
+
+			if(usuario.getDni().equalsIgnoreCase(dni) && 
+					usuario.getContrasena().equals(contrasena)) {
+				return usuario;
+			}
+		}
+		
 		return null;
 	}
 	
 	public Usuario obtenerUsuario(String dni) {
 		//retornar un usuario si el dni coincide con el recibido por parametro
+		for(int i=0;i<usuarios.size();i++) {
+			Usuario usuario = usuarios.get(i);
+
+			if(usuario.getDni().equalsIgnoreCase(dni)) {
+				return usuario;
+			}
+		}
+		
 		return null;
 	}
 	
 	//tipo usuario profesor
 	public void anadirUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
-		
+		usuarios.add(usuario);
 	}
 
 	public void anadirNota(Usuario alumno, Usuario usuarioLogin, Materia materia, double nota) {

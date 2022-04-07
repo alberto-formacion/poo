@@ -1,6 +1,9 @@
 package sanluis.main;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.Scanner;
 
 import sanluis.gestion.GestionMateria;
@@ -19,7 +22,7 @@ public class Main {
 		System.out.println("Bienvenido, haz login para iniciar");
 		System.out.println("DNI:");
 		String dni = teclado.next();
-		System.out.println("ContraseÃ±a");
+		System.out.println("Contraseña");
 		String contrasena = teclado.next();
 		
 		Usuario usuarioLogin = gestionUsuario.login(dni, contrasena);
@@ -56,7 +59,37 @@ public class Main {
 					switch(opcion) {
 					case 1:
 						//solicitar los datos del usuario y ponerlos en el usuario
-						Usuario usuario = null;
+						System.out.println("Introduce DNI:");
+						String dniAlta = teclado.next();
+						System.out.println("Introduce el nombre:");
+						String nombreAlta = teclado.next();
+						System.out.println("Introduce contraseña:");
+						String contrasenaAlta = teclado.next();
+						System.out.println("Introduce una fecha de nacimiento: (dd/MM/yyyy))");
+						String fechaNacimiento = teclado.next();
+						DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+						
+						System.out.println("Introduce email:");
+						String emailAlta = teclado.next();
+						System.out.println("Introduce telefono:");
+						String telefonoAlta = teclado.next();
+						System.out.println("Introduce direccion:");
+						String direccionAlta = teclado.next();
+						System.out.println("Introduce el tipo usuario:");
+						for(int i=0;i<TipoUsuario.values().length;i++) {
+							System.out.println((i+1)+".-"+TipoUsuario.values()[i]);
+						}
+						int tipoUsuarioAlta = teclado.nextInt();
+						
+						TipoUsuario tu;
+						
+						if(tipoUsuarioAlta == 1) {
+							tu = TipoUsuario.ALUMNO;
+						}else {
+							tu = TipoUsuario.PROFESOR;
+						}
+						
+						Usuario usuario = new Usuario(dniAlta, nombreAlta, fechaNacimiento, contrasenaAlta, LocalDate.parse(fechaNacimiento, format), emailAlta, telefonoAlta, direccionAlta, tu);
 						gestionUsuario.anadirUsuario(usuario);
 						break;
 					case 2:
