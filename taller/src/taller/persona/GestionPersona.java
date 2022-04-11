@@ -63,6 +63,8 @@ public class GestionPersona {
 		
 	}
 	
+	
+	
 	public void mostrarClientes() {
 		for(Cliente c: clientes) {
 			System.out.println(c);
@@ -227,7 +229,7 @@ public class GestionPersona {
 		}
 	}
 	
-	public void anadirVehiculoNuevoCliente() {
+	public void anadirNuevoVehiculoACliente() {
 		System.out.println("Introduce DNI cliente");
 		String dni = teclado.next();
 		
@@ -288,6 +290,7 @@ public class GestionPersona {
 					}
 				}else {
 					clientes[i].setVehiculo(nuevoVehiculo);
+					System.out.println("Vehiculo Añadido");
 				}
 				
 				break;
@@ -342,6 +345,14 @@ public class GestionPersona {
 		}
 		
 		return null;
+	}
+
+	public void eliminarVehiculoCliente() {
+		Cliente cliente = obtenerClienteDNI();
+		
+		if(cliente!=null) {
+			cliente.setVehiculo(null);
+		}
 	}
 	
 }
