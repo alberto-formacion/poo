@@ -24,6 +24,13 @@ public class GestionMateria {
 	}
 	
 	public Materia obtenerMateria(String codigo) {
+		for(int i=0;i<materias.size();i++) {
+			Materia materia = materias.get(i);
+			
+			if(materia.getCodigo().equals(codigo)) {
+				return materia;
+			}
+		}
 		return null;
 	}
 

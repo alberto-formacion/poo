@@ -10,10 +10,11 @@ public class UsuarioMateria {
 	private LocalDateTime fechaHoraEvaluacion;
 	private double nota;
 	
-	public UsuarioMateria(Usuario alumno, Usuario profesor, LocalDateTime fechaHoraEvaluacion, double nota) {
+	public UsuarioMateria(Usuario alumno, Usuario profesor, Materia materia, LocalDateTime fechaHoraEvaluacion, double nota) {
 		super();
 		this.alumno = alumno;
 		this.profesor = profesor;
+		this.materia = materia;
 		this.fechaHoraEvaluacion = fechaHoraEvaluacion;
 		this.nota = nota;
 	}
@@ -41,6 +42,14 @@ public class UsuarioMateria {
 	}
 	public void setNota(double nota) {
 		this.nota = nota;
+	}
+
+	public Materia getMateria() {
+		return materia;
+	}
+
+	public void setMateria(Materia materia) {
+		this.materia = materia;
 	}
 
 }

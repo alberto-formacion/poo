@@ -1,5 +1,6 @@
 package sanluis.gestion;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import sanluis.vo.Materia;
@@ -55,17 +56,25 @@ public class GestionUsuario {
 		usuarios.add(usuario);
 	}
 
-	public void anadirNota(Usuario alumno, Usuario usuarioLogin, Materia materia, double nota) {
-		// TODO Auto-generated method stub
-		
+	public void anadirNota(Usuario alumno, Usuario profesor, Materia materia, double nota) {
+		UsuarioMateria notaNueva = new UsuarioMateria(alumno, profesor, materia, LocalDateTime.now(), nota);
+		notas.add(notaNueva);
 	}
 	
 	//tipo usuario alumno
-	public void consultarNotas(Usuario usuarioLogin) {
-		//muestra las notas del usuario
+	public void consultarNotas(Usuario alumno) {
+		System.out.println(alumno.getApellidos() + ", " + alumno.getNombre() + ":");
+		for(int i=0; i<notas.size();i++) {
+			UsuarioMateria nota = notas.get(i);
+			
+			if(nota.getAlumno().getDni().equalsIgnoreCase(alumno.getDni())) {
+				System.out.println(nota.getMateria().getCodigo() + " - " + nota.getMateria().getNombre() + ": " + nota.getNota());
+			}
+		}
+
 	}
 
-	public void enviarPropuestaRevision(Usuario usuarioLogin, Materia materia) {
+	public void enviarPropuestaRevision(Usuario alumno, Materia materia) {
 		//saca por consola un texto en el que sale que el usuario solicita una revsion de la materia y la nota que ha obtenido
 		//PARA NOTA: enviar un email (buscar el uso de la libreria javamail)
 		
