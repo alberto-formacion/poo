@@ -76,6 +76,14 @@ public class GestionUsuario {
 
 	public void enviarPropuestaRevision(Usuario alumno, Materia materia) {
 		//saca por consola un texto en el que sale que el usuario solicita una revsion de la materia y la nota que ha obtenido
+		for(int i=0;i<notas.size();i++) {
+			UsuarioMateria nota = notas.get(i);
+			
+			if(nota.getAlumno().getDni().equalsIgnoreCase(alumno.getDni()) && nota.getMateria().getCodigo().equals(materia.getCodigo())) {
+				System.out.println("El alumno " + alumno.getNombre() + " " + alumno.getApellidos() + " solicita revision para la materia " + materia.getNombre() + " con la nota " + nota.getNota());
+			}
+		}
+		
 		//PARA NOTA: enviar un email (buscar el uso de la libreria javamail)
 		
 	}

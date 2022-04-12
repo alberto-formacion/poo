@@ -16,11 +16,11 @@ public class GestionMateria {
 	}
 	
 	public void anadirMateria(Materia materia) {
-		
+		materias.add(materia);
 	}
 	
 	public ArrayList<Materia> obtenerMaterias(){
-		return null;
+		return materias;
 	}
 	
 	public Materia obtenerMateria(String codigo) {

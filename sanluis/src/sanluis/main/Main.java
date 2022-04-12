@@ -42,12 +42,13 @@ public class Main {
 							gestionUsuario.consultarNotas(usuarioLogin);
 							break;
 						case 2:
-							System.out.println("¿En que materia quieres una revision?");
+							System.out.println("En que materia quieres una revision?");
 							ArrayList<Materia> materias = gestionMateria.obtenerMaterias();
 
 							for (Materia m : materias) {
 								System.out.println(m.getCodigo() + ".-" + m.getNombre());
 							}
+							
 							String codigo = teclado.next();
 
 							Materia materia = gestionMateria.obtenerMateria(codigo);
@@ -112,8 +113,15 @@ public class Main {
 							gestionUsuario.anadirNota(alumno, usuarioLogin, materia, nota);
 							break;
 						case 3:
-							// solicitar los datos de la materia y ponerlos en materia
-							Materia materiaNueva = null;
+							System.out.println("Introduce un codigo:");
+							String codMateria = teclado.next();
+							System.out.println("Introduce un nombre:");
+							String nombreMateria = teclado.next();
+							System.out.println("Introduce las horas lectivas:");
+							int horasLectivas = teclado.nextInt();
+							
+							Materia materiaNueva = new Materia(codMateria, nombreMateria, horasLectivas);
+							
 							gestionMateria.anadirMateria(materiaNueva);
 							break;
 						}
