@@ -87,5 +87,13 @@ public class GestionUsuario {
 		//PARA NOTA: enviar un email (buscar el uso de la libreria javamail)
 		
 	}
+	
+	public void calcularRepetir() {
+		//repite si:
+			//ha suspendido mas de 3 asignaturas
+			//la suma de las horas lectivas suspendidas es > 100
+			//mostrar las asignaturas que ha suspendido
+		//no repite en caso contrario
+	}
 
 }
