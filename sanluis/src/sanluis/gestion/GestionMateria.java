@@ -12,6 +12,7 @@ public class GestionMateria {
 		materias = new ArrayList<Materia>();
 		
 		materias.add(new Materia("101", "Java", 210));
+		materias.add(new Materia("102", "Diseño grafico", 50));
 		
 	}
 	

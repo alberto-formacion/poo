@@ -88,12 +88,25 @@ public class GestionUsuario {
 		
 	}
 	
-	public void calcularRepetir() {
-		//repite si:
-			//ha suspendido mas de 3 asignaturas
-			//la suma de las horas lectivas suspendidas es > 100
-			//mostrar las asignaturas que ha suspendido
-		//no repite en caso contrario
+	public void calcularRepetir(Usuario alumno) {
+		int numAsignaturasSuspendidas = 0;
+		int numHorasLectivasSuspendidas = 0;
+		
+		for(int i=0;i<notas.size();i++) {
+			UsuarioMateria nota = notas.get(i);
+			if(nota.getAlumno().getDni().equalsIgnoreCase(alumno.getDni())) {
+				if(nota.getNota() < 5.0) {
+					numAsignaturasSuspendidas++;
+					numHorasLectivasSuspendidas = numHorasLectivasSuspendidas + nota.getMateria().getHorasLectivas();
+				}
+			}
+		}
+		
+		if(numAsignaturasSuspendidas > 3 || numHorasLectivasSuspendidas > 100) {
+			System.out.println("El alumno " + alumno.getNombre() + " " + alumno.getApellidos() + " tiene que repetir");
+		}else {
+			System.out.println("El alumno " + alumno.getNombre() + " " + alumno.getApellidos() + " pasa de curso");
+		}
 	}
 
 }

@@ -54,6 +54,10 @@ public class Main {
 							Materia materia = gestionMateria.obtenerMateria(codigo);
 
 							gestionUsuario.enviarPropuestaRevision(usuarioLogin, materia);
+							break;
+						case 3:
+							gestionUsuario.calcularRepetir(usuarioLogin);
+							break;
 						}
 
 					} else {
@@ -127,7 +131,7 @@ public class Main {
 						}
 					}
 
-					System.out.println("¿Quieres realizar alguna otra cosa? (S/N)");
+					System.out.println("Quieres realizar alguna otra cosa? (S/N)");
 					respuesta = teclado.next();
 
 				} while ("s".equalsIgnoreCase(respuesta));
@@ -155,7 +159,8 @@ public class Main {
 	private static int menuAlumno(Scanner teclado) {
 		System.out.println("Que quieres hacer:");
 		System.out.println("1.-Consultar notas");
-		System.out.println("2.-Enviar propuesta de revisión");
+		System.out.println("2.-Enviar propuesta de revision");
+		System.out.println("3.-Comprar si repito");
 		return teclado.nextInt();
 	}
 
