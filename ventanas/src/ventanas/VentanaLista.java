@@ -101,10 +101,33 @@ public class VentanaLista {
 		frame.getContentPane().add(btnPasarDrchTodos);
 		
 		JButton btnPasarIzqUno = new JButton("<");
+		btnPasarIzqUno.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int posicion = listCompetencias.getSelectedIndex();
+				String lenguaje = listCompetencias.getModel().getElementAt(posicion);
+				
+				DefaultListModel<String> modelL = (DefaultListModel<String>) listLeguajes.getModel();
+				DefaultListModel<String> modeloC = (DefaultListModel<String>) listCompetencias.getModel();
+				modelL.addElement(lenguaje);
+				modeloC.removeElement(lenguaje);
+			}
+		});
 		btnPasarIzqUno.setBounds(154, 132, 89, 23);
 		frame.getContentPane().add(btnPasarIzqUno);
 		
 		JButton btnPasarIzqTodos = new JButton("<<");
+		btnPasarIzqTodos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DefaultListModel<String> modelL = (DefaultListModel<String>) listLeguajes.getModel();
+				DefaultListModel<String> modelC = (DefaultListModel<String>) listCompetencias.getModel();
+				
+				for(int i=0;i<modelC.getSize();i++) {
+					modelL.addElement(modelC.getElementAt(i));
+				}
+				
+				modelC.removeAllElements();
+			}
+		});
 		btnPasarIzqTodos.setBounds(154, 166, 89, 23);
 		frame.getContentPane().add(btnPasarIzqTodos);
 	}
