@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JList;
 import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 public class VentanaInicio extends JFrame {
 
@@ -61,12 +62,14 @@ public class VentanaInicio extends JFrame {
 			modeloTabla.addRow(new Object[] {a.getCodAsignatura(), a.getNombreAsignatura(), a.getHorasLectivas(), "", "", "", ""});
 		}
 		
-		table = new JTable(modeloTabla);
-		table.setBounds(10, 114, 414, 136);
-		
 		this.repaint();
 		
-		contentPane.add(table);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(10, 114, 414, 136);
+		contentPane.add(scrollPane_1);
+		
+		table = new JTable(modeloTabla);
+		scrollPane_1.setViewportView(table);
 		
 	}
 }
