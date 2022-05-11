@@ -163,12 +163,10 @@ public class VentanaNomina {
 				
 				Enumeration<AbstractButton> turnos = buttonGroupTurno.getElements();
 				
-				while(turnos.hasMoreElements()) {
-					AbstractButton turno = turnos.nextElement();
-					
-					if(turno.isSelected() && turno.getText().equals("Nocturno")) {
-						sueldoFinal = sueldoFinal + 200;
-					}
+				try {
+					comprobarTurnos(turnos, sueldoFinal);
+				} catch(NominaException ex) {
+					//sacar un jDialog con el mensaje del error
 				}
 				
 				if(chckbxPeligrosidad.isSelected()) {
@@ -202,5 +200,15 @@ public class VentanaNomina {
 		});
 		btnCalcular.setBounds(165, 477, 89, 23);
 		frame.getContentPane().add(btnCalcular);
+	}
+	
+	public void comprobarTurnos(Enumeration<AbstractButton> turnos, Double sueldoFinal) throws NominaException {
+		while(turnos.hasMoreElements()) {
+			AbstractButton turno = turnos.nextElement();
+			
+			if(turno.isSelected() && turno.getText().equals("Nocturno")) {
+				sueldoFinal = sueldoFinal + 200;
+			}
+		}	
 	}
 }
