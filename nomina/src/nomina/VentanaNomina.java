@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
@@ -13,6 +15,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -155,47 +158,35 @@ public class VentanaNomina {
 		JButton btnCalcular = new JButton("Calcular");
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Double sueldoFinal = Double.parseDouble(textSueldoBase.getText());
-				
-				int numHijos = Integer.parseInt(comboBoxHijos.getSelectedItem().toString());
-				
-				sueldoFinal = sueldoFinal + (numHijos * 50);
-				
-				Enumeration<AbstractButton> turnos = buttonGroupTurno.getElements();
-				
+				Double sueldoFinal = 0.0;
 				try {
-					comprobarTurnos(turnos, sueldoFinal);
-				} catch(NominaException ex) {
-					//sacar un jDialog con el mensaje del error
-				}
+					comprobarEmail();
+					sueldoFinal = Double.parseDouble(textSueldoBase.getText());
 				
-				if(chckbxPeligrosidad.isSelected()) {
-					sueldoFinal = sueldoFinal + 100;
-				}
-				
-				if(chckbxDesplazamiento.isSelected()) {
-					sueldoFinal = sueldoFinal + 50;
-				}
-				
-				Enumeration<AbstractButton> jornadas = buttonGroupJornada.getElements();
-				
-				while(jornadas.hasMoreElements()) {
-					AbstractButton jornada = jornadas.nextElement();
+					int numHijos = Integer.parseInt(comboBoxHijos.getSelectedItem().toString());
 					
-					if(jornada.isSelected()) {
-						switch(jornada.getText()) {
-						case "Reducida":
-							sueldoFinal = sueldoFinal * 0.75;
-							break;
-						case "Media":
-							sueldoFinal = sueldoFinal * 0.5;
-							break;
-						}
-						break;
+					sueldoFinal = sueldoFinal + (numHijos * 50);
+					
+					Enumeration<AbstractButton> turnos = buttonGroupTurno.getElements();
+	
+					comprobarTurnos(turnos, sueldoFinal);
+					
+					if(chckbxPeligrosidad.isSelected()) {
+						sueldoFinal = sueldoFinal + 100;
 					}
+					
+					if(chckbxDesplazamiento.isSelected()) {
+						sueldoFinal = sueldoFinal + 50;
+					}
+					
+					Enumeration<AbstractButton> jornadas = buttonGroupJornada.getElements();
+					
+					comprobarJornada(jornadas, sueldoFinal);
+					
+					lblResultado.setText("El trabajador" + textNombre.getText() + " " + textApellidos.getText() + " cobra " + sueldoFinal);
+				}catch (NumberFormatException | NominaException ex) {
+					JOptionPane.showMessageDialog(frame, ex.getMessage());
 				}
-				
-				lblResultado.setText("El trabajador" + textNombre.getText() + " " + textApellidos.getText() + " cobra " + sueldoFinal);
 			}
 		});
 		btnCalcular.setBounds(165, 477, 89, 23);
@@ -203,12 +194,60 @@ public class VentanaNomina {
 	}
 	
 	public void comprobarTurnos(Enumeration<AbstractButton> turnos, Double sueldoFinal) throws NominaException {
+		boolean turnoSelecionado = false;
 		while(turnos.hasMoreElements()) {
 			AbstractButton turno = turnos.nextElement();
 			
 			if(turno.isSelected() && turno.getText().equals("Nocturno")) {
 				sueldoFinal = sueldoFinal + 200;
+				turnoSelecionado = true;
+			}else if(turno.isSelected() && turno.getText().equals("Diurno")) {
+				turnoSelecionado = true;
 			}
-		}	
+		}
+		
+		if(!turnoSelecionado) {
+			throw new NominaException("Tienes que selecionar un turno");
+		}
+	}
+	
+	private void comprobarEmail() throws NominaException{
+		Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+		String email = textEmail.getText();
+		
+		Matcher mather = pattern.matcher(email);
+		
+		if(!mather.find()) {
+			throw new NominaException("Email incorrecto");
+		}
+	}
+	
+	private void comprobarJornada(Enumeration<AbstractButton> jornadas, Double sueldoFinal) {
+		boolean jornadaSeleccionada = false;
+		while(jornadas.hasMoreElements()) {
+			AbstractButton jornada = jornadas.nextElement();
+			
+			if(jornada.isSelected()) {
+				switch(jornada.getText()) {
+				case "Reducida":
+					sueldoFinal = sueldoFinal * 0.75;
+					jornadaSeleccionada = true;
+					break;
+				case "Media":
+					sueldoFinal = sueldoFinal * 0.5;
+					jornadaSeleccionada = true;
+					break;
+				case "Completa":
+					jornadaSeleccionada = true;
+					break;
+				}
+			}
+		}
+		
+		if(!jornadaSeleccionada) {
+			throw new NominaException("Tienes que seleccionar una Jornada");
+		}
 	}
 }
