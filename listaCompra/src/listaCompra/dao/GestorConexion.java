@@ -25,7 +25,21 @@ public class GestorConexion {
 	}
 	
 	public void cerrarConexion(Connection con, Statement st, ResultSet rs){
-		
+		try {
+			if(rs!=null) {
+				rs.close();
+			}
+			
+			if(st!=null) {
+				st.close();
+			}
+			
+			if(con!=null) {
+				con.close();
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
