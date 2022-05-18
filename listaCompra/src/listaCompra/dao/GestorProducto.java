@@ -98,7 +98,29 @@ public class GestorProducto {
 	
 	public Producto obtenerProductoPorCodigo(int codigo) {
 		//"SELECT * FROM productos WHERE codigo =" + codigo
+		Producto p = null;
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		try {
+			con = gestorConexion.crearConexion();
+			st = con.createStatement();
+			rs = st.executeQuery("SELECT * FROM productos WHERE codigo =" + codigo);
+			
+			while(rs.next()) {
+				int cod = rs.getInt("codigo");
+				String nombre = rs.getString("nombre");
+				
+				p = new Producto(cod, nombre);
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			gestorConexion.cerrarConexion(con, st, rs);
+		}
 		
+		return p;
 	}
 
 }
