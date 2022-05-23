@@ -12,26 +12,12 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Volcando estructura de base de datos para sanluis
-CREATE DATABASE IF NOT EXISTS `sanluis` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `sanluis`;
-
--- Volcando estructura para tabla sanluis.usuarios
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) NOT NULL,
-  `apellidos` varchar(100) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `telefono` varchar(20) NOT NULL,
-  `dni` varchar(9) NOT NULL,
-  `usuario` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- Volcando datos para la tabla sanluis.usuarios: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla sanluis.usuarios: ~2 rows (aproximadamente)
+DELETE FROM `usuarios`;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` (`id`, `nombre`, `apellidos`, `email`, `telefono`, `dni`, `usuario`, `password`) VALUES
+	(2, 'aaaa', 'ssss', 'a@a.com', '555555', '888', 'alberto', '1234'),
+	(3, 'aaaa', 'aaa', 'aaaa', 'aaaa', 'aaaa', 'aaa', '1234');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
